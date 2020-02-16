@@ -4,19 +4,19 @@ import {
   Typography as Font,
   Button,
   Input,
-  Grid,
+  Grid
 } from "@material-ui/core";
-import ArticleList from './ArticleList'
-import Weather from './Weather'
-const Location = ({locate,area:[area,setArea],time,weather,news}) => {
+import ArticleList from "./ArticleList";
+import Weather from "./Weather";
+const Location = ({ locate, area: [area, setArea], time, weather, news }) => {
   const handleSubmit = e => {
     e.preventDefault();
-    locate()
-    setArea('')
+    locate();
+    setArea("");
   };
-  const handleChange = ({target:{value}}) => {
-      setArea(value)
-  }
+  const handleChange = ({ target: { value } }) => {
+    setArea(value);
+  };
   return (
     <Container component="article" className="LocationRoot">
       <Font variant="h1" align="center">
@@ -42,11 +42,13 @@ const Location = ({locate,area:[area,setArea],time,weather,news}) => {
       <br />
 
       <Font variant="h1" id="place"></Font>
-      <Font variant="caption" style={{display:time?'block':'none'}}>Local Time: {time}</Font>
-      <Weather weather={weather} style={weather?'block':'none'}/>
+      <Font variant="caption" style={{ display: time ? "block" : "none" }}>
+        Local Time: {time}
+      </Font>
+      <Weather weather={weather} style={weather ? "block" : "none"} />
       <div id="map" style={{ height: "600px" }}></div>
       <Grid container spacing={5} justify="space-around">
-        <ArticleList news={news}/>
+        <ArticleList news={news} />
       </Grid>
     </Container>
   );

@@ -4,9 +4,9 @@ import { Grid } from "@material-ui/core";
 export default ({ news }) => {
   return (
     <Grid item xs={12}>
-        {news.map(news => (
-          <Article news={news} key={news.title} />
-        ))}
+      {news.map(news => (
+        <Article news={news} key={news.title} />
+      ))}
     </Grid>
   );
 };

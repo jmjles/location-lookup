@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Loader, LoaderOptions } from "google-maps";
+import { Loader } from "google-maps";
 import Locate from "./components/Location";
 import axios from "axios";
 import { key, url } from "./misc/config";
@@ -8,7 +8,8 @@ export default function App() {
   const [weather, setWeather] = useState("");
   const [news, setNews] = useState([]);
   const [area, setArea] = useState("");
-  const [map, setMap ]= useState('');
+  const [map, setMap] = useState("");
+
   useEffect(() => {
     const loadmap = async () => {
       const loader = new Loader(key.google);
@@ -39,8 +40,8 @@ export default function App() {
 
     let zoom;
     data.results[0].types[0] === "locality" ? (zoom = 10) : (zoom = 5);
-      map.setCenter({lat:arealat, lng:arealing});
-      map.setZoom(zoom);
+    map.setCenter({ lat: arealat, lng: arealing });
+    map.setZoom(zoom);
     getNews(name);
     getTime(arealat, arealing);
     getWeather(name);
@@ -56,14 +57,12 @@ export default function App() {
         }
       });
       let articles = res.data.articles;
-      console.log(articles)
       if (articles.length < 0) {
         alert("No News Found");
       } else {
         articles.map(article => {
-          
           const date = article.publishedAt.split("T");
-          setNews(prev => [
+          return setNews(prev => [
             {
               title: article.title,
               url: article.url,

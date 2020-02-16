@@ -1,0 +1,14 @@
+.LocationRoot #article div {
+  padding: 2rem;
+}
+
+.LocationRoot #article div h3 {
+  margin-bottom: 2rem;
+}
+
+.LocationRoot #article div img {
+  width: 100%;
+  height: 50vh;
+  margin-bottom: 2rem;
+}
+/*# sourceMappingURL=index.css.map */
