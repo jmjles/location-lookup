@@ -1,10 +1,10 @@
-import { google, news, time, weather } from "./keys";
+//import { google, news, time, weather } from "./keys";
 
 export const key = {
-  google: process.env.GOOGLE || google,
-  news: process.env.NEWS || news,
-  time: process.env.TIME || time,
-  weather: process.env.WEATHER || weather
+  google: process.env.GOOGLE,
+  news: process.env.NEWS,
+  time: process.env.TIME,
+  weather: process.env.WEATHER 
 };
 
 export const url = {
