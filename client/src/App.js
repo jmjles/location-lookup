@@ -2,13 +2,24 @@ import React, { useState, useEffect } from "react";
 import { Loader } from "google-maps";
 import Locate from "./components/Location";
 import axios from "axios";
-import { key, url } from "./misc/config";
+import { url } from "./misc/config";
 export default function App() {
   const [time, setTime] = useState("");
   const [weather, setWeather] = useState("");
   const [news, setNews] = useState([]);
   const [area, setArea] = useState("");
   const [map, setMap] = useState("");
+  const [key, setKey] = useState({});
+
+  useEffect(() => {
+    const getKeys = async () => {
+      const res = await axios("/api", {
+        headers: { authorization: "YOU ARE AUTHORIZED" }
+      });
+      setKey(res.data);
+    };
+    getKeys();
+  }, [key.google]);
 
   useEffect(() => {
     const loadmap = async () => {
@@ -22,9 +33,10 @@ export default function App() {
       };
       setMap(new google.maps.Map(document.getElementById("map"), options));
     };
-    loadmap();
-  }, []);
-
+    if (key.google) {
+      loadmap();
+    }
+  }, [key.google]);
   const locate = async () => {
     //* Google Api
     const res = await axios(url.google, {

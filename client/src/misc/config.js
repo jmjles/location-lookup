@@ -1,12 +1,3 @@
-//import { google, news, time, weather } from "./keys";
-
-export const key = {
-  google: process.env.GOOGLE,
-  news: process.env.NEWS,
-  time: process.env.TIME,
-  weather: process.env.WEATHER 
-};
-
 export const url = {
   google: "https://maps.googleapis.com/maps/api/geocode/json",
   news: "https://newsapi.org/v2/everything",
