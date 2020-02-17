@@ -16,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/jmjles/location-lookup/issues"
   },
-  "homepage": "https://github.com/jmjles/location-lookup#readme"
+  "homepage": "https://github.com/jmjles/location-lookup#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "concurrently": "^5.1.0",
+    "nodemon": "^2.0.2"
+  }
 }
