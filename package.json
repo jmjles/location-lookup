@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
     "dev": "concurrently \"npm run server\" \"cd client && npm run start\"",
-    "server": "nodemon ."
+    "server": "nodemon .",
+    "start": "node ."
   },
   "repository": {
     "type": "git",
