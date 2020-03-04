@@ -1,7 +1,7 @@
 {
   "name": "location-lookup",
   "version": "1.0.0",
-  "description": "",
+  "description": "This motivation for this project is to retreive data from a specific location quickly.",
   "main": "index.js",
   "scripts": {
     "client": "npm start --prefix client",
