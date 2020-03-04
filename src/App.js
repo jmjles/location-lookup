@@ -13,7 +13,7 @@ export default function App() {
 
   useEffect(() => {
     const getKeys = async () => {
-      const res = await axios("/api", {
+      const res = await axios("https://location-lookup-be.herokuapp.com/api", {
         headers: { authorization: "YOU ARE AUTHORIZED" }
       });
       setKey(res.data);
