@@ -4,18 +4,34 @@ import App from "./App";
 import "./styles/index.css";
 import {
   CssBaseline,
-  ThemeProvider,
   createMuiTheme,
-  StylesProvider
+  StylesProvider,
+  MuiThemeProvider
 } from "@material-ui/core";
-const theme = createMuiTheme({});
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#252628"
+    },
+    secondary: {
+      main: "#598288"
+    },
+    background: {
+      paper: "#DCE7E0",
+      default: "#B7CBCA"
+    },
+    text: {
+      primary: "#181C20"
+    }
+  }
+});
 ReactDOM.render(
-  <CssBaseline>
-    <ThemeProvider theme={theme}>
+  <MuiThemeProvider theme={theme}>
+    <CssBaseline>
       <StylesProvider injectFirst>
         <App />
       </StylesProvider>
-    </ThemeProvider>
-  </CssBaseline>,
+    </CssBaseline>
+  </MuiThemeProvider>,
   document.getElementById("root")
 );

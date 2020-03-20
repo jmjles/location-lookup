@@ -16,7 +16,8 @@ export class MapContainer extends Component {
         google:this.props.google,
         zoom:this.props.zoom,
         minZoom:4,
-        bounds:this.Bounds.extend(this.props.center)
+        bounds:this.Bounds.extend(this.props.center),
+        
     }
     render(){
         console.log(this.MapProps)

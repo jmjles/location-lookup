@@ -4,52 +4,86 @@ import {
   Typography as Font,
   Button,
   Input,
-  Grid
+  Grid,
+  CircularProgress,
+  Paper
 } from "@material-ui/core";
 import ArticleList from "./ArticleList";
 import Weather from "./Weather";
-const Location = ({ locate, area: [area, setArea], time, weather, news }) => {
+const Location = ({
+  locate,
+  area: [area, setArea],
+  time,
+  weather,
+  news,
+  loading
+}) => {
   const handleSubmit = e => {
     e.preventDefault();
     locate();
     setArea("");
   };
-  const handleChange = ({ target: { value } }) => {
-    setArea(value);
-  };
+  const handleChange = ({ target: { value } }) => setArea(value);
   return (
-    <Container component="article" className="LocationRoot">
-      <Font variant="h1" align="center">
-        Location Lookup
-      </Font>
-      <form onSubmit={e => handleSubmit(e)} style={{ textAlign: "center" }}>
-        <Input
-          placeholder="Enter A Place"
-          id="Search"
-          value={area}
-          onChange={handleChange}
-        />
-        <Button
-          id="SearchButton"
-          type="submit"
-          variant="outlined"
-          color="primary"
-        >
-          <Font variant="button">Search</Font>
-        </Button>
-      </form>
+    <Container component="article" className="LocationRoot" maxWidth='md'>
+      {loading ? (
+        <>
+          <Font variant="h4" component="h1" align="center">
+            Location Lookup
+          </Font>
+          <CircularProgress size={50} className="Loading" />
+        </>
+      ) : (
+        <>
+          <Paper square className='Header'>
+            <Font variant="h4" component="h1" align="center">
+              Location Lookup
+            </Font>
+            <form
+              onSubmit={e => handleSubmit(e)}
+              style={{ textAlign: "center" }}
+            >
+              <Input
+                placeholder="Enter A Place"
+                id="Search"
+                value={area}
+                onChange={handleChange}
+              />
+              <Button
+                id="SearchButton"
+                type="submit"
+                variant="contained"
+                color="primary"
+              >
+                <Font variant="button">Search</Font>
+              </Button>
+            </form>
 
-      <br />
+            <br />
+            <Font variant="h4" component="h2" id="place">
+              {weather.name}
+            </Font>
+            <Grid container justify='space-around' alignContent='center'>
+              <Grid item>
+                <Font
+                  variant="caption"
+                  style={{ display: time ? "block" : "none" }}
+                >
+                  Local Time: {time}
+                </Font>
+              </Grid>
+              <Grid item>
+                <Weather weather={weather} style={weather ? "block" : "none"} />
+              </Grid>
+            </Grid>
+          </Paper>
 
-      <Font variant="h1" id="place"></Font>
-      <Font variant="caption" style={{ display: time ? "block" : "none" }}>
-        Local Time: {time}
-      </Font>
-      <Weather weather={weather} style={weather ? "block" : "none"} />
-      <div id="map" style={{ height: "600px" }}></div>
-      <Grid container spacing={5} justify="space-around">
-        <ArticleList news={news} />
-      </Grid>
+          <div id="map"></div>
+          <Grid container spacing={5} justify="space-around" direction="column">
+            <ArticleList news={news} />
+          </Grid>
+        </>
+      )}
     </Container>
   );
 };

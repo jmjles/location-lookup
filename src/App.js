@@ -10,7 +10,7 @@ export default function App() {
   const [area, setArea] = useState("");
   const [map, setMap] = useState("");
   const [key, setKey] = useState({});
-
+  const [loading,setLoading] = useState(true)
   useEffect(() => {
     const getKeys = async () => {
       const res = await axios("https://location-lookup-be.herokuapp.com/api", {
@@ -35,6 +35,7 @@ export default function App() {
     };
     if (key.google) {
       loadmap();
+      setLoading(false)
     }
   }, [key.google]);
   const locate = async () => {
@@ -140,6 +141,7 @@ export default function App() {
       time={time}
       weather={weather}
       news={news}
+      loading={loading}
     />
   );
 }

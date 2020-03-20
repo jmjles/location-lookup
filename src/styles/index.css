@@ -1,14 +1,124 @@
+.LocationRoot .Loading {
+  display: block;
+  margin: 50px auto;
+}
+
+.LocationRoot .Header {
+  padding: 1rem;
+}
+
+.LocationRoot .Header h1 {
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 650px) {
+  .LocationRoot .Header h1 {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1000px) {
+  .LocationRoot .Header h1 {
+    font-size: 3.2rem;
+  }
+}
+
+@media (min-width: 1000px) {
+  .LocationRoot .Header h2 {
+    font-size: 2.7rem;
+  }
+}
+
+.LocationRoot .Header button {
+  margin-left: 1rem;
+}
+
+.LocationRoot .Header button span {
+  font-size: 1rem;
+}
+
+.LocationRoot .Header span {
+  font-size: 1rem;
+}
+
+@media (min-width: 650px) {
+  .LocationRoot .Header span {
+    font-size: 1.3rem;
+  }
+}
+
+.LocationRoot #place {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.LocationRoot #map {
+  height: 300px;
+  margin: 2rem 0;
+}
+
+@media (min-width: 650px) {
+  .LocationRoot #map {
+    height: 400px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .LocationRoot #map {
+    height: 500px;
+  }
+}
+
+.LocationRoot #article {
+  margin-bottom: 30px;
+}
+
 .LocationRoot #article div {
   padding: 2rem;
 }
 
-.LocationRoot #article div h3 {
+.LocationRoot #article div p:nth-child(4) {
+  margin-bottom: 20px;
+}
+
+.LocationRoot #article div h2 {
   margin-bottom: 2rem;
+  font-size: 1.7rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+@media (min-width: 650px) {
+  .LocationRoot #article div h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 1000px) {
+  .LocationRoot #article div h2 {
+    font-size: 2.3rem;
+  }
 }
 
 .LocationRoot #article div img {
   width: 100%;
-  height: 50vh;
+  height: 200px;
   margin-bottom: 2rem;
+}
+
+@media (min-width: 650px) {
+  .LocationRoot #article div img {
+    height: 300px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .LocationRoot #article div img {
+    height: 350px;
+  }
 }
 /*# sourceMappingURL=index.css.map */

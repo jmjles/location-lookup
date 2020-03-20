@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAEI,aAFS,CACX,QAAQ,CACN,GAAG,CAAC;EACF,OAAO,EAAE,IAAI;CAWd;;AAdL,AAKM,aALO,CACX,QAAQ,CACN,GAAG,CAGD,EAAE,CAAC;EACD,aAAa,EAAE,IAAI;CACpB;;AAPP,AASM,aATO,CACX,QAAQ,CACN,GAAG,CAOD,GAAG,CAAC;EACF,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;EACZ,aAAa,EAAE,IAAI;CACpB",
-    "sources": [
-        "locations.scss"
-    ],
-    "names": [],
-    "file": "locations.css"
-}
