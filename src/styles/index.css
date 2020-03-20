@@ -1,3 +1,17 @@
+#app nav {
+  margin-bottom: 2rem;
+  padding: 0.5rem 0;
+  background-color: #414c51;
+}
+
+#app nav div div > div:last-child {
+  margin-left: auto;
+}
+
+#app nav a {
+  margin-left: auto;
+}
+
 .LocationRoot .Loading {
   display: block;
   margin: 50px auto;

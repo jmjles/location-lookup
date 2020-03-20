@@ -27,11 +27,10 @@ const theme = createMuiTheme({
 });
 ReactDOM.render(
   <MuiThemeProvider theme={theme}>
-    <CssBaseline>
-      <StylesProvider injectFirst>
-        <App />
-      </StylesProvider>
-    </CssBaseline>
+    <StylesProvider injectFirst>
+      <CssBaseline />
+      <App />
+    </StylesProvider>
   </MuiThemeProvider>,
   document.getElementById("root")
 );

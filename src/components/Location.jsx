@@ -25,7 +25,7 @@ const Location = ({
   };
   const handleChange = ({ target: { value } }) => setArea(value);
   return (
-    <Container component="article" className="LocationRoot" maxWidth='md'>
+    <Container component="article" className="LocationRoot" maxWidth="md">
       {loading ? (
         <>
           <Font variant="h4" component="h1" align="center">
@@ -35,7 +35,7 @@ const Location = ({
         </>
       ) : (
         <>
-          <Paper square className='Header'>
+          <Paper square className="Header">
             <Font variant="h4" component="h1" align="center">
               Location Lookup
             </Font>
@@ -63,7 +63,7 @@ const Location = ({
             <Font variant="h4" component="h2" id="place">
               {weather.name}
             </Font>
-            <Grid container justify='space-around' alignContent='center'>
+            <Grid container justify="space-around" alignContent="center">
               <Grid item>
                 <Font
                   variant="caption"

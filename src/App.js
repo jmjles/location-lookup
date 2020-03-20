@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Loader } from "google-maps";
+import { Paper, Container, Grid, Button, Typography as Font} from '@material-ui/core'
 import Locate from "./components/Location";
 import axios from "axios";
 import { url } from "./misc/config";
+import logo from './assets/pics/logo.png'
 export default function App() {
   const [time, setTime] = useState("");
   const [weather, setWeather] = useState("");
@@ -10,7 +12,7 @@ export default function App() {
   const [area, setArea] = useState("");
   const [map, setMap] = useState("");
   const [key, setKey] = useState({});
-  const [loading,setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const getKeys = async () => {
       const res = await axios("https://location-lookup-be.herokuapp.com/api", {
@@ -35,7 +37,7 @@ export default function App() {
     };
     if (key.google) {
       loadmap();
-      setLoading(false)
+      setLoading(false);
     }
   }, [key.google]);
   const locate = async () => {
@@ -135,13 +137,34 @@ export default function App() {
     }
   };
   return (
-    <Locate
-      locate={locate}
-      area={[area, setArea]}
-      time={time}
-      weather={weather}
-      news={news}
-      loading={loading}
-    />
+    <div id="app">
+      <Paper square elevation={5} component="nav">
+        <Container maxWidth="md">
+          <Grid container alignItems="center">
+            <Grid item>
+              <img src={logo} alt="Jesus MJ Logo" />
+            </Grid>
+            <Grid item>
+              <Button
+                component="a"
+                href="https://jesusmj.com"
+                variant="contained"
+                color="primary"
+              >
+                <Font variant="button">Back Home</Font>
+              </Button>
+            </Grid>
+          </Grid>
+        </Container>
+      </Paper>
+      <Locate
+        locate={locate}
+        area={[area, setArea]}
+        time={time}
+        weather={weather}
+        news={news}
+        loading={loading}
+      />
+    </div>
   );
 }
