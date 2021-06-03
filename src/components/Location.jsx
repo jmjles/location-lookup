@@ -6,19 +6,20 @@ import {
   Input,
   Grid,
   CircularProgress,
-  Paper
+  Paper,
 } from "@material-ui/core";
 import ArticleList from "./ArticleList";
 import Weather from "./Weather";
+import moment from "moment";
 const Location = ({
   locate,
   area: [area, setArea],
   time,
   weather,
   news,
-  loading
+  loading,
 }) => {
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     locate();
     setArea("");
@@ -40,7 +41,7 @@ const Location = ({
               Location Lookup
             </Font>
             <form
-              onSubmit={e => handleSubmit(e)}
+              onSubmit={(e) => handleSubmit(e)}
               style={{ textAlign: "center" }}
             >
               <Input
@@ -69,7 +70,7 @@ const Location = ({
                   variant="caption"
                   style={{ display: time ? "block" : "none" }}
                 >
-                  Local Time: {time}
+                  Local Time: {moment(time,"HH:mm:ss").format("h:mm a")}
                 </Font>
               </Grid>
               <Grid item>
