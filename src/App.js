@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Loader } from "google-maps";
-import { Paper, Container, Grid, Button, Typography as Font} from '@material-ui/core'
+import {
+  Paper,
+  Container,
+  Grid,
+  Button,
+  Typography as Font,
+} from "@material-ui/core";
 import Locate from "./components/Location";
 import axios from "axios";
 import { url } from "./misc/config";
-import logo from './assets/pics/logo.png'
+import logo from "./assets/pics/logo.png";
 export default function App() {
   const [time, setTime] = useState("");
   const [weather, setWeather] = useState("");
@@ -13,11 +19,17 @@ export default function App() {
   const [map, setMap] = useState("");
   const [key, setKey] = useState({});
   const [loading, setLoading] = useState(true);
+
+  const prod = "https://location-lookup-be.herokuapp.com/api";
+  const dev = "http://localhost:5000/api";
   useEffect(() => {
     const getKeys = async () => {
-      const res = await axios("https://location-lookup-be.herokuapp.com/api", {
-        headers: { authorization: "YOU ARE AUTHORIZED" }
-      });
+      const res = await axios(
+        process.env.NODE_ENV === "development" ? dev : prod,
+        {
+          headers: { authorization: "YOU ARE AUTHORIZED" },
+        }
+      );
       setKey(res.data);
     };
     getKeys();
@@ -31,7 +43,7 @@ export default function App() {
       let options = {
         center: { lat: 40, lng: -100 },
         scrollwheel: false,
-        zoom: 5
+        zoom: 5,
       };
       setMap(new google.maps.Map(document.getElementById("map"), options));
     };
@@ -45,8 +57,8 @@ export default function App() {
     const res = await axios(url.google, {
       params: {
         address: area,
-        key: key.google
-      }
+        key: key.google,
+      },
     });
     const data = res.data;
     const name = data.results[0].address_components[0].long_name;
@@ -61,32 +73,32 @@ export default function App() {
     getTime(arealat, arealing);
     getWeather(name);
   };
-  const getNews = async name => {
+  const getNews = async (name) => {
     try {
       //* News Api
       const res = await axios(url.news, {
         params: {
           q: name,
           apiKey: key.news,
-          pageSize: 6
-        }
+          pageSize: 6,
+        },
       });
       let articles = res.data.articles;
       if (articles.length < 0) {
         alert("No News Found");
       } else {
-        articles.map(article => {
+        articles.map((article) => {
           const date = article.publishedAt.split("T");
-          return setNews(prev => [
+          return setNews((prev) => [
             {
               title: article.title,
               url: article.url,
               snippet: article.description,
               img: article.urlToImage,
               source: article.source.name,
-              published: date[0]
+              published: date[0],
             },
-            ...prev
+            ...prev,
           ]);
         });
       }
@@ -104,8 +116,8 @@ export default function App() {
           by: "position",
           lat: arealat,
           lng: arealing,
-          key: key.time
-        }
+          key: key.time,
+        },
       });
       const data = res.data;
       const thetime = data.formatted.split(" ");
@@ -115,15 +127,15 @@ export default function App() {
     }
   };
 
-  const getWeather = async name => {
+  const getWeather = async (name) => {
     try {
       //* Weather Api
       const res = await axios(url.weather, {
         params: {
           q: name,
           units: "imperial",
-          appid: key.weather
-        }
+          appid: key.weather,
+        },
       });
       const data = res.data;
       const place = data.name;

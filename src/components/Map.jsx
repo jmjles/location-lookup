@@ -20,7 +20,6 @@ export class MapContainer extends Component {
         
     }
     render(){
-        console.log(this.MapProps)
         return(
             <Map {...this.MapProps}>
             </Map>
